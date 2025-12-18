@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "orderpb";
+
+message CreateOrderRequest {
+    string product_id = 1;
+    uint32 quantity = 2;
+    float price = 3;
+}
+
+message CreateOrderResponse {
+    string order_id = 1;
+}
+
+service OrderService {
+    rpc CreateOrder (CreateOrderRequest) returns (CreateOrderResponse);
+}
