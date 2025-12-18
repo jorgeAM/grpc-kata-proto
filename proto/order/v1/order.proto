@@ -1,11 +1,15 @@
 syntax = "proto3";
 
-option go_package = "orderpb";
+option go_package = "github.com/jorgeAM/grpc-kata-proto/gen/go/order/v1;order";
 
 message CreateOrderRequest {
-    string product_id = 1;
-    uint32 quantity = 2;
-    float price = 3;
+    string user_id = 1;
+    repeated Items items = 2;
+    float total_price = 3;
+}
+
+message Items {
+  int32 name = 1;
 }
 
 message CreateOrderResponse {
