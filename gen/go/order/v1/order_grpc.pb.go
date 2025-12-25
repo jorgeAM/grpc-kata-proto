@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	OrderService_CreateOrder_FullMethodName = "/OrderService/CreateOrder"
+	OrderService_Create_FullMethodName = "/OrderService/Create"
 )
 
 // OrderServiceClient is the client API for OrderService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type OrderServiceClient interface {
-	CreateOrder(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error)
+	Create(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error)
 }
 
 type orderServiceClient struct {
@@ -37,10 +37,10 @@ func NewOrderServiceClient(cc grpc.ClientConnInterface) OrderServiceClient {
 	return &orderServiceClient{cc}
 }
 
-func (c *orderServiceClient) CreateOrder(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error) {
+func (c *orderServiceClient) Create(ctx context.Context, in *CreateOrderRequest, opts ...grpc.CallOption) (*CreateOrderResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(CreateOrderResponse)
-	err := c.cc.Invoke(ctx, OrderService_CreateOrder_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, OrderService_Create_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *orderServiceClient) CreateOrder(ctx context.Context, in *CreateOrderReq
 // All implementations must embed UnimplementedOrderServiceServer
 // for forward compatibility.
 type OrderServiceServer interface {
-	CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error)
+	Create(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error)
 	mustEmbedUnimplementedOrderServiceServer()
 }
 
@@ -62,8 +62,8 @@ type OrderServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedOrderServiceServer struct{}
 
-func (UnimplementedOrderServiceServer) CreateOrder(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error) {
-	return nil, status.Error(codes.Unimplemented, "method CreateOrder not implemented")
+func (UnimplementedOrderServiceServer) Create(context.Context, *CreateOrderRequest) (*CreateOrderResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "method Create not implemented")
 }
 func (UnimplementedOrderServiceServer) mustEmbedUnimplementedOrderServiceServer() {}
 func (UnimplementedOrderServiceServer) testEmbeddedByValue()                      {}
@@ -86,20 +86,20 @@ func RegisterOrderServiceServer(s grpc.ServiceRegistrar, srv OrderServiceServer)
 	s.RegisterService(&OrderService_ServiceDesc, srv)
 }
 
-func _OrderService_CreateOrder_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _OrderService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(CreateOrderRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(OrderServiceServer).CreateOrder(ctx, in)
+		return srv.(OrderServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: OrderService_CreateOrder_FullMethodName,
+		FullMethod: OrderService_Create_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(OrderServiceServer).CreateOrder(ctx, req.(*CreateOrderRequest))
+		return srv.(OrderServiceServer).Create(ctx, req.(*CreateOrderRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -112,8 +112,8 @@ var OrderService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*OrderServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateOrder",
-			Handler:    _OrderService_CreateOrder_Handler,
+			MethodName: "Create",
+			Handler:    _OrderService_Create_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

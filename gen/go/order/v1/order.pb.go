@@ -201,9 +201,9 @@ const file_order_v1_order_proto_rawDesc = "" +
 	"\n" +
 	"unit_price\x18\x03 \x01(\x02R\tunitPrice\"0\n" +
 	"\x13CreateOrderResponse\x12\x19\n" +
-	"\border_id\x18\x01 \x01(\tR\aorderId2H\n" +
-	"\fOrderService\x128\n" +
-	"\vCreateOrder\x12\x13.CreateOrderRequest\x1a\x14.CreateOrderResponseB:Z8github.com/jorgeAM/grpc-kata-proto/gen/go/order/v1;orderb\x06proto3"
+	"\border_id\x18\x01 \x01(\tR\aorderId2C\n" +
+	"\fOrderService\x123\n" +
+	"\x06Create\x12\x13.CreateOrderRequest\x1a\x14.CreateOrderResponseB:Z8github.com/jorgeAM/grpc-kata-proto/gen/go/order/v1;orderb\x06proto3"
 
 var (
 	file_order_v1_order_proto_rawDescOnce sync.Once
@@ -225,8 +225,8 @@ var file_order_v1_order_proto_goTypes = []any{
 }
 var file_order_v1_order_proto_depIdxs = []int32{
 	1, // 0: CreateOrderRequest.items:type_name -> Items
-	0, // 1: OrderService.CreateOrder:input_type -> CreateOrderRequest
-	2, // 2: OrderService.CreateOrder:output_type -> CreateOrderResponse
+	0, // 1: OrderService.Create:input_type -> CreateOrderRequest
+	2, // 2: OrderService.Create:output_type -> CreateOrderResponse
 	2, // [2:3] is the sub-list for method output_type
 	1, // [1:2] is the sub-list for method input_type
 	1, // [1:1] is the sub-list for extension type_name

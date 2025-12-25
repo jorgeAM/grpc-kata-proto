@@ -19,5 +19,5 @@ message CreateOrderResponse {
 }
 
 service OrderService {
-    rpc CreateOrder (CreateOrderRequest) returns (CreateOrderResponse);
+    rpc Create (CreateOrderRequest) returns (CreateOrderResponse);
 }
